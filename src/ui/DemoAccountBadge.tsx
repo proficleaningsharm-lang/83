@@ -45,7 +45,7 @@ export function DemoAccountBadge() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="flex items-center gap-1.5 rounded-md bg-base-800 px-2 py-0.5 text-2xs font-bold transition hover:bg-base-700"
+        className="flex items-center gap-1.5 rounded-md bg-base-800 px-2 py-1 text-2xs font-bold transition hover:bg-base-700 sm:py-0.5"
         aria-label="Демо-счёт"
       >
         <Wallet size={12} className="text-secondary-400" />

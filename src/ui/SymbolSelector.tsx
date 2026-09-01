@@ -26,13 +26,13 @@ export function SymbolSelector() {
   const selected = [...SYMBOLS, ...FOREX_SYMBOLS].find((s) => s.id === symbolId);
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="relative min-w-0 flex-1 sm:flex-none">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1.5 rounded-lg bg-base-800 px-3 py-1.5 text-sm font-semibold text-base-100 transition hover:bg-base-700"
+        className="flex w-full items-center justify-between gap-1.5 rounded-lg bg-base-800 px-3 py-1.5 text-sm font-semibold text-base-100 transition hover:bg-base-700 sm:w-auto"
       >
-        {selected?.displaySymbol ?? symbolId}
-        <ChevronDown size={14} className={clsx('transition', open && 'rotate-180')} />
+        <span className="truncate">{selected?.displaySymbol ?? symbolId}</span>
+        <ChevronDown size={14} className="shrink-0 transition" style={{ transform: open ? 'rotate(180deg)' : undefined }} />
       </button>
       {open && (
         <div className="absolute left-0 top-full z-20 mt-1 w-56 overflow-hidden rounded-xl border border-base-800 bg-base-900 py-1 shadow-2xl animate-fade-in">

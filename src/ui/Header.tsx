@@ -37,24 +37,24 @@ export function Header({ onAiAnalyze, aiLoading }: HeaderProps) {
   const marketOpen = symbol ? !marketClosed : false;
 
   return (
-    <header className="flex flex-col gap-1.5 border-b border-base-800 bg-base-950 px-2 py-1.5 sm:gap-2 sm:px-3 sm:py-2 lg:flex-row lg:items-center lg:gap-2.5">
+    <header className="flex flex-col gap-2 border-b border-base-800 bg-base-950 px-3 py-2 sm:gap-2 sm:px-3 sm:py-2 lg:flex-row lg:items-center lg:gap-2.5">
       {/* Row 1 on mobile / first segment on desktop: brand + symbol + timeframe */}
-      <div className="flex items-center gap-1.5 sm:gap-2 lg:contents">
+      <div className="flex items-center gap-2 sm:gap-2 lg:contents">
         {/* Left: brand + symbol selector */}
-        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+        <div className="flex min-w-0 flex-1 items-center gap-2 sm:flex-none sm:shrink-0 lg:gap-2">
           <span className="hidden text-sm font-bold tracking-tight text-base-100 sm:inline">Терминал</span>
           <SymbolSelector />
         </div>
 
         {/* Timeframe selector — compact, scrollable if it still overflows */}
-        <div className="ml-auto flex items-center gap-0.5 overflow-x-auto rounded-lg bg-base-800 p-1 no-scrollbar lg:ml-0 lg:overflow-visible">
+        <div className="flex shrink-0 items-center gap-0.5 overflow-x-auto rounded-lg bg-base-800 p-1 no-scrollbar lg:overflow-visible">
           {TIMEFRAMES.map((tf) => (
             <button
               key={tf}
               onClick={() => setTimeframe(tf)}
               className={clsx(
-                'shrink-0 rounded-md px-1.5 py-1 text-center text-3xs font-semibold transition sm:px-2 sm:text-2xs lg:px-3 lg:text-xs',
-                'w-7 sm:w-8 lg:w-10',
+                'shrink-0 rounded-md px-2 py-1.5 text-center text-2xs font-semibold transition sm:px-2 sm:text-2xs lg:px-3 lg:text-xs',
+                'w-8 sm:w-8 lg:w-10',
                 tf === timeframe
                   ? 'bg-primary-600 text-white'
                   : 'text-base-300 hover:text-base-100',
@@ -67,14 +67,14 @@ export function Header({ onAiAnalyze, aiLoading }: HeaderProps) {
       </div>
 
       {/* Row 2 on mobile / second segment on desktop: timer + right cluster */}
-      <div className="flex items-center gap-1.5 sm:gap-2 lg:contents">
+      <div className="flex items-center gap-2 sm:gap-2 lg:contents">
         {/* Candle timer — always visible on top bar, any orientation */}
         <div className="flex shrink-0 items-center">
           <CandleTimer />
         </div>
 
         {/* Right cluster: price + badges */}
-        <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-1.5 lg:gap-2.5">
+        <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-1.5 lg:gap-2.5">
           {/* Price + forex hours — hidden on small screens to save space */}
           <div className="hidden flex-col items-end sm:flex">
             <span
@@ -99,7 +99,7 @@ export function Header({ onAiAnalyze, aiLoading }: HeaderProps) {
           {/* Market open/closed badge */}
           <span
             className={clsx(
-              'shrink-0 rounded-md px-1.5 py-0.5 text-3xs font-bold sm:text-2xs',
+              'flex shrink-0 items-center rounded-md px-2 py-1 text-2xs font-bold sm:text-2xs',
               marketOpen ? 'bg-success-700/30 text-success-400' : 'bg-accent-700/30 text-accent-400',
             )}
           >
@@ -122,7 +122,7 @@ export function Header({ onAiAnalyze, aiLoading }: HeaderProps) {
 
           <button
             onClick={() => setStrategiesOpen(true)}
-            className="flex shrink-0 items-center gap-1 rounded-lg bg-base-800 p-1.5 text-base-300 transition hover:bg-base-700 hover:text-base-100 sm:p-2"
+            className="flex shrink-0 items-center gap-1 rounded-lg bg-base-800 p-2 text-base-300 transition hover:bg-base-700 hover:text-base-100 sm:p-2"
             aria-label="Стратегии"
           >
             <Boxes size={16} />
