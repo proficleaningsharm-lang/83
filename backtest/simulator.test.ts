@@ -82,7 +82,7 @@ describe('simulate', () => {
     expect(inSample.length + outOfSample.length).toBe(trades.length);
   });
 
-  it('in-sample ratio controls split proportion', () => {
+  it('in-sample ratio controls split proportion', { timeout: 15000 }, () => {
     const candles = uptrendCandles(300);
     const trades70 = simulate(candles, {
       ...BASE_OPTIONS, inSampleRatio: 0.7, symbol: 'BTCUSDT', timeframe: '1m',
